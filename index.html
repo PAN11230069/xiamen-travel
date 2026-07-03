@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>2026 廈金五天四夜慢旅行</title>
+<link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700;900&family=Noto+Sans+TC:wght@400;500;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- 潮汐背景線：象徵金門—廈門的航線 -->
+<div class="tide-line" aria-hidden="true"></div>
+
+<header class="hero">
+  <div class="hero-route" aria-hidden="true">
+    <span class="port">金門</span>
+    <span class="route-track"><span class="route-dot"></span></span>
+    <span class="port">廈門</span>
+  </div>
+  <p class="eyebrow">2026.07.19 → 2026.07.23</p>
+  <h1 id="trip-title">2026 廈金五天四夜慢旅行</h1>
+  <p class="subtitle" id="trip-subtitle">把行程、地圖、住宿和注意事項都放在這裡，出門只要打開這個網站就好。</p>
+
+  <div class="hero-meta" id="hero-meta">
+    <!-- JS 填入：目前行程 / 今日重點 / 集合時間地點 / 緊急聯絡人 -->
+  </div>
+
+  <nav class="quick-nav">
+    <a href="#today">今日行程</a>
+    <a href="#schedule">完整行程</a>
+    <a href="#hotel">住宿資訊</a>
+    <a href="#traffic">交通地圖</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- 公告區 -->
+  <section class="section" id="announcement">
+    <h2 class="section-title"><span class="tag">公告</span>最新公告</h2>
+    <div class="announcement-card" id="announcement-card"></div>
+  </section>
+
+  <!-- 倒數 -->
+  <section class="section" id="countdown">
+    <h2 class="section-title"><span class="tag">倒數</span>重要時刻</h2>
+    <div class="countdown-grid" id="countdown-grid"></div>
+  </section>
+
+  <!-- 今日行程 -->
+  <section class="section" id="today">
+    <h2 class="section-title"><span class="tag">Now</span>今日行程</h2>
+    <div id="today-card"></div>
+  </section>
+
+  <!-- 完整行程表 -->
+  <section class="section" id="schedule">
+    <h2 class="section-title"><span class="tag">行程</span>完整每日行程表</h2>
+    <div class="day-tabs" id="day-tabs"></div>
+    <div id="day-panels"></div>
+  </section>
+
+  <!-- 交通與地圖 -->
+  <section class="section" id="traffic">
+    <h2 class="section-title"><span class="tag">交通</span>交通資訊</h2>
+    <div class="traffic-list" id="traffic-list">
+      <div class="traffic-card">
+        <div class="traffic-route">住家 → 松山機場</div>
+        <div class="traffic-detail">交通方式：計程車　｜　預估時間：60 分鐘</div>
+        <div class="traffic-note">備註：建議一起叫車</div>
+      </div>
+      <div class="traffic-card">
+        <div class="traffic-route">酒店 → 東渡碼頭</div>
+        <div class="traffic-detail">交通方式：計程車　｜　預估時間：16 分鐘</div>
+        <div class="traffic-note">備註：鼓浪嶼船票需提前確認</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 待訂購 / 待預約 -->
+  <section class="section" id="todo">
+    <h2 class="section-title"><span class="tag">待辦</span>待訂購 / 待預約</h2>
+    <div class="todo-columns">
+      <div class="todo-col">
+        <h3>待訂購</h3>
+        <ul class="todo-list" id="todo-order"></ul>
+      </div>
+      <div class="todo-col">
+        <h3>待預約</h3>
+        <ul class="todo-list" id="todo-reserve"></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 住宿資訊 -->
+  <section class="section" id="hotel">
+    <h2 class="section-title"><span class="tag">住宿</span>住宿資訊</h2>
+    <div id="hotel-list"></div>
+  </section>
+
+  <!-- 攜帶物品清單 -->
+  <section class="section" id="packing">
+    <h2 class="section-title"><span class="tag">清單</span>攜帶物品清單</h2>
+    <p class="section-hint">勾選會自動儲存在這支手機上</p>
+    <ul class="packing-list" id="packing-list"></ul>
+  </section>
+
+  <!-- 預算 -->
+  <section class="section" id="budget">
+    <h2 class="section-title"><span class="tag">預算</span>共同花費</h2>
+    <table class="budget-table" id="budget-table">
+      <thead><tr><th>項目</th><th>金額 (NTD)</th></tr></thead>
+      <tbody id="budget-body"></tbody>
+      <tfoot>
+        <tr><td>總計</td><td id="budget-total">0</td></tr>
+        <tr><td>每人平均（7人）</td><td id="budget-avg">0</td></tr>
+      </tfoot>
+    </table>
+  </section>
+
+  <!-- 美食清單 -->
+  <section class="section" id="food">
+    <h2 class="section-title"><span class="tag">美食</span>美食清單</h2>
+    <h3 class="sub-title">必吃</h3>
+    <div class="food-grid" id="food-must"></div>
+    <h3 class="sub-title">備選</h3>
+    <div class="food-grid" id="food-backup"></div>
+  </section>
+
+  <!-- 雨天備案 -->
+  <section class="section" id="rainy">
+    <h2 class="section-title"><span class="tag">備案</span>雨天備案</h2>
+    <div id="rainy-list"></div>
+  </section>
+
+  <!-- 成員名單 -->
+  <section class="section" id="members">
+    <h2 class="section-title"><span class="tag">成員</span>參加人員</h2>
+    <div class="member-grid" id="member-grid"></div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>2026 廈金五天四夜慢旅行　｜　出門前記得看一眼今日行程</p>
+</footer>
+
+<script src="data.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
