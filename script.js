@@ -33,9 +33,7 @@ function renderHero() {
   meta.innerHTML = `
     <div class="meta-item"><div class="meta-label">目前行程</div><div class="meta-value">${currentDayLabel}</div></div>
     <div class="meta-item"><div class="meta-label">今日重點</div><div class="meta-value">${highlight}</div></div>
-    <div class="meta-item"><div class="meta-label">集合時間地點</div><div class="meta-value">${tripInfo.meetingTime}</div></div>
-    <div class="meta-item"><div class="meta-label">去程航班</div><div class="meta-value">${tripInfo.outboundFlight}</div></div>
-    <div class="meta-item"><div class="meta-label">回程航班</div><div class="meta-value">${tripInfo.returnFlightNo}</div></div>
+    <div class="meta-item"><div class="meta-label">集合時間</div><div class="meta-value">${tripInfo.meetingTime}</div></div>
     <div class="meta-item"><div class="meta-label">緊急聯絡人</div><div class="meta-value">${tripInfo.emergencyContact}</div></div>
   `;
 
@@ -218,53 +216,6 @@ function renderSchedule() {
       panelsEl.querySelectorAll(".day-panel").forEach(p => p.classList.toggle("active", p.dataset.idx === idx));
     });
   });
-}
-
-// ---------- 機場接送（送機／接機） ----------
-function renderTransfers() {
-  const el = document.getElementById("transfer-list");
-  el.innerHTML = transfers.map(t => `
-    <div class="traffic-card">
-      <div class="traffic-route">${t.type}｜${t.pickup} → ${t.dropoff}</div>
-      <div class="traffic-detail">
-        用車日期：${t.date.replace(/^\d{4}-/, "").replace("-", "/")}　｜　時間：${t.time}
-      </div>
-      <div class="traffic-detail">
-        乘車人數：${t.passengers}　｜　行李件數：${t.luggage}　｜　航班：${t.flight}
-      </div>
-      <div class="traffic-note">備註：${t.note}</div>
-    </div>
-  `).join("");
-}
-
-// ---------- 航班 / 船班 ----------
-function renderFlightFerry() {
-  const el = document.getElementById("flight-ferry-list");
-  const flightRows = flights.map(f => `
-    <div class="traffic-card">
-      <div class="traffic-route">✈️ ${f.date}　${f.route}</div>
-      <div class="traffic-detail">班機：${f.no}　｜　時間：${f.time}</div>
-    </div>
-  `).join("");
-  const ferryRows = ferries.map(f => `
-    <div class="traffic-card">
-      <div class="traffic-route">⛴️ ${f.date}　${f.route}</div>
-      <div class="traffic-detail">船名：${f.ship}　｜　時間：${f.time}</div>
-    </div>
-  `).join("");
-  el.innerHTML = flightRows + ferryRows;
-}
-
-// ---------- 市內交通 ----------
-function renderLocalTraffic() {
-  const el = document.getElementById("traffic-list");
-  el.innerHTML = localTraffic.map(t => `
-    <div class="traffic-card">
-      <div class="traffic-route">${t.route}</div>
-      <div class="traffic-detail">交通方式：${t.transport}　｜　預估時間：${t.duration}</div>
-      ${t.note ? `<div class="traffic-note">備註：${t.note}</div>` : ""}
-    </div>
-  `).join("");
 }
 
 // ---------- 待辦（待訂購 / 待預約） ----------
@@ -451,9 +402,6 @@ function init() {
   renderCountdown();
   renderToday();
   renderSchedule();
-  renderTransfers();
-  renderFlightFerry();
-  renderLocalTraffic();
   renderTodo();
   renderHotels();
   renderPacking();
