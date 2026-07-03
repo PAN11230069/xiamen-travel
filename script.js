@@ -218,6 +218,38 @@ function renderSchedule() {
   });
 }
 
+// ---------- 交通資訊 ----------
+function renderTraffic() {
+  const el = document.getElementById("traffic-list");
+  el.innerHTML = `
+    <h3 class="sub-title">機場接送</h3>
+    ${trafficItems.map(t => `
+      <div class="traffic-card">
+        <div class="traffic-route">${t.title}｜${t.from} → ${t.to}</div>
+        <div class="traffic-detail">用車日期：${t.date}　｜　用車時間：${t.time}</div>
+        <div class="traffic-detail">乘車人數：${t.passengers}　｜　行李件數：${t.luggage}</div>
+        <div class="traffic-note">航班號碼：${t.flight}</div>
+      </div>
+    `).join("")}
+
+    <h3 class="sub-title">航班</h3>
+    ${flightList.map(f => `
+      <div class="traffic-card">
+        <div class="traffic-route">${f.date}　${f.route}</div>
+        <div class="traffic-detail">航班：${f.flight}　｜　時間：${f.time}</div>
+      </div>
+    `).join("")}
+
+    <h3 class="sub-title">船班</h3>
+    ${ferryList.map(f => `
+      <div class="traffic-card">
+        <div class="traffic-route">${f.date}　${f.route}</div>
+        <div class="traffic-detail">船名：${f.ship}　｜　時間：${f.time}</div>
+      </div>
+    `).join("")}
+  `;
+}
+
 // ---------- 待辦（待訂購 / 待預約） ----------
 function loadTodoOverrides() {
   try { return JSON.parse(localStorage.getItem(STORAGE_KEYS.todo)) || {}; }
@@ -402,6 +434,7 @@ function init() {
   renderCountdown();
   renderToday();
   renderSchedule();
+  renderTraffic();
   renderTodo();
   renderHotels();
   renderPacking();

@@ -9,15 +9,15 @@ const tripInfo = {
   startDate: "2026-07-19",
   endDate: "2026-07-23",
   emergencyContact: "尚未填寫",
-  meetingTime: "尚未填寫",
-  meetingPlace: "尚未填寫",
+  meetingTime: "7/19 10:30",
+  meetingPlace: "桃園市龍潭區住家",
   returnFlight: "2026-07-23T20:15:00",
   ferryToXiamen: "2026-07-20T09:00:00",
   ferryToKinmen: "2026-07-23T17:00:00"
 };
 
 const announcement = {
-  text: "目前行程仍在規劃中，請大家確認待訂購與待預約項目。",
+  text: "接送、住宿、航班與船班資訊已更新。請大家出發前確認證件、行李與集合時間。",
   updatedAt: "2026-07-04"
 };
 
@@ -47,25 +47,58 @@ const todoList = {
 
 const hotels = [
   {
-    name: "金門住宿",
+    name: "歡樂滿屋民宿",
     nights: "7/19",
-    address: "尚未填寫",
+    address: "金門縣金城鎮榜林村伯玉路一段236巷8號",
     checkin: "尚未填寫",
     checkout: "尚未填寫",
-    phone: "尚未填寫",
+    phone: "0963 591 810",
     rooms: "尚未填寫",
     map: ""
   },
   {
-    name: "廈門酒店",
+    name: "廈門中山路步行街檀邑飯店",
     nights: "7/20 - 7/23",
-    address: "尚未填寫",
+    address: "廈門, 思明區, 局口西二街109號",
     checkin: "尚未填寫",
     checkout: "尚未填寫",
-    phone: "尚未填寫",
+    phone: "+86-592-6015999",
     rooms: "尚未填寫",
     map: ""
   }
+];
+
+const trafficItems = [
+  {
+    title: "送機",
+    date: "07.19",
+    time: "早 10:30",
+    from: "桃園市龍潭區住家",
+    to: "松山機場",
+    passengers: "7人",
+    luggage: "7件",
+    flight: "B7-8821"
+  },
+  {
+    title: "接機",
+    date: "07.23",
+    time: "21:15 抵達",
+    from: "松山機場",
+    to: "桃園市龍潭區住家",
+    passengers: "7人",
+    luggage: "7件",
+    flight: "B7-8836"
+  }
+];
+
+const flightList = [
+  { date: "7/19", route: "松山 → 金門", flight: "B7-8821", time: "14:30 - 15:35" },
+  { date: "7/23", route: "金門 → 松山", flight: "B7-8836", time: "20:15 - 21:15" }
+];
+
+const ferryList = [
+  { date: "7/20", route: "金門 → 五通", ship: "金瑞龍", time: "09:00 - 09:30" },
+  { date: "7/23", route: "五通 → 金門", ship: "新金祥龍", time: "17:00 - 17:30" }
 ];
 
 const packingList = [
@@ -106,19 +139,41 @@ const tripData = [
     location: "金門",
     plans: [
       {
+        time: "10:30",
+        place: "桃園市龍潭區住家",
+        activity: "送機上車",
+        transport: "接送車",
+        duration: "",
+        ticket: false,
+        reserve: true,
+        note: "7人、7件行李，前往松山機場",
+        map: ""
+      },
+      {
+        time: "14:30",
+        place: "松山機場",
+        activity: "搭機前往金門",
+        transport: "飛機",
+        duration: "B7-8821",
+        ticket: true,
+        reserve: false,
+        note: "松山 → 金門，14:30 - 15:35",
+        map: ""
+      },
+      {
         time: "15:35",
-        place: "金門",
+        place: "金門機場",
         activity: "抵達金門",
         transport: "飛機",
         duration: "",
         ticket: false,
         reserve: false,
-        note: "抵達後前往金門住宿",
+        note: "抵達後前往歡樂滿屋民宿",
         map: ""
       },
       {
         time: "晚上",
-        place: "金門住宿",
+        place: "歡樂滿屋民宿",
         activity: "入住休息",
         transport: "自行安排",
         duration: "",
@@ -142,10 +197,10 @@ const tripData = [
         place: "金門碼頭",
         activity: "搭船至廈門",
         transport: "船",
-        duration: "",
+        duration: "金瑞龍",
         ticket: true,
         reserve: false,
-        note: "請提前到碼頭辦理相關手續",
+        note: "金門 → 五通，09:00 - 09:30，請提前到碼頭辦理相關手續",
         map: ""
       },
       {
@@ -161,7 +216,7 @@ const tripData = [
       },
       {
         time: "下午",
-        place: "廈門酒店",
+        place: "廈門中山路步行街檀邑飯店",
         activity: "辦理住宿",
         transport: "計程車",
         duration: "約 26 分鐘",
@@ -323,13 +378,13 @@ const tripData = [
       },
       {
         time: "17:00",
-        place: "廈門碼頭",
+        place: "五通碼頭",
         activity: "搭船返回金門",
         transport: "船",
-        duration: "",
+        duration: "新金祥龍",
         ticket: true,
         reserve: false,
-        note: "務必提早到碼頭",
+        note: "五通 → 金門，17:00 - 17:30，務必提早到碼頭",
         map: ""
       },
       {
@@ -337,10 +392,21 @@ const tripData = [
         place: "金門機場",
         activity: "搭機返台",
         transport: "飛機",
-        duration: "",
+        duration: "B7-8836",
         ticket: true,
         reserve: false,
-        note: "注意船班與航班銜接時間",
+        note: "金門 → 松山，20:15 - 21:15，注意船班與航班銜接時間",
+        map: ""
+      },
+      {
+        time: "21:15",
+        place: "松山機場",
+        activity: "接機上車",
+        transport: "接送車",
+        duration: "",
+        ticket: false,
+        reserve: true,
+        note: "7人、7件行李，返回桃園市龍潭區住家",
         map: ""
       }
     ]
