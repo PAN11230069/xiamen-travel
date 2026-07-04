@@ -36,6 +36,7 @@ function renderHero() {
     <div class="meta-item"><div class="meta-label">集合時間地點</div><div class="meta-value">${tripInfo.meetingTime}</div></div>
     <div class="meta-item"><div class="meta-label">去程航班</div><div class="meta-value">${tripInfo.outboundFlight}</div></div>
     <div class="meta-item"><div class="meta-label">回程航班</div><div class="meta-value">${tripInfo.returnFlightNo}</div></div>
+    <div class="meta-item"><div class="meta-label">緊急聯絡人</div><div class="meta-value">${tripInfo.emergencyContact}</div></div>
   `;
 
   // 潮汐進度點：出發前在金門端，行程中依天數往廈門端移動，結束後回到金門端（返台）

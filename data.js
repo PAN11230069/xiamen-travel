@@ -98,20 +98,18 @@ const hotels = [
     name: "歡樂滿屋民宿",
     nights: "7/19",
     address: "金門縣金城鎮榜林村伯玉路一段236巷8號",
-    checkin: "尚未填寫",
+    checkin: "7/19 16:30",
     checkout: "7/20 08:00",
     phone: "0963 591 810",
-    rooms: "尚未填寫",
     map: ""
   },
   {
     name: "廈門中山路步行街檀邑飯店",
     nights: "7/20 - 7/23",
     address: "廈門市思明區局口西二街109號",
-    checkin: "尚未填寫",
-    checkout: "尚未填寫",
+    checkin: "7/20 14:30",
+    checkout: "7/23 10:00",
     phone: "+86-592-6015999",
-    rooms: "尚未填寫",
     map: ""
   }
 ];
