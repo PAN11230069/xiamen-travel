@@ -99,7 +99,7 @@ const hotels = [
     nights: "7/19",
     address: "金門縣金城鎮榜林村伯玉路一段236巷8號",
     checkin: "尚未填寫",
-    checkout: "尚未填寫",
+    checkout: "7/20 08:00",
     phone: "0963 591 810",
     rooms: "尚未填寫",
     map: ""
